@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makan Bergizi Gratis - Badan Gizi Nasional</title>
+    
+    <!-- Tailwind CSS untuk Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Intro */
+        #intro-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #1d4ed8; /* blue-700 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .intro-logo {
+            animation: pulse-scale 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 99px;
+        }
+
+        .loader-progress {
+            position: absolute;
+            height: 100%;
+            width: 50%;
+            background: white;
+            animation: load-move 1.5s infinite linear;
+        }
+
+        @keyframes load-move {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+
+        /* Navbar Blur Effect */
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hover Active State */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #2563eb;
+        }
+
+        /* Custom Shapes for Banner */
+        .cta-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- INTRO ANIMASI -->
+    <div id="intro-screen">
+        <div class="intro-logo bg-white p-6 rounded-full shadow-2xl mb-6">
+            <img src="mbg kita.jpeg" alt="Garuda" class="w-20 h-20">
+        </div>
+        <h1 class="text-white text-3xl font-extrabold tracking-tight">Badan Gizi Nasional</h1>
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-16 py-5 flex items-center justify-between text-white">
+        <!-- Logo Kiri (Format Link) -->
+        <a href="#" class="flex items-center gap-3 group">
+            <div class="bg-white p-1.5 rounded shadow-sm transition-transform group-hover:rotate-12">
+                <img src="mbg kita.jpeg" alt="Logo" class="w-8 h-8 object-contain">
+            </div>
+            <span class="font-bold text-xl tracking-tighter">BGN</span>
+        </a>
+
+        <!-- Navigasi Kanan -->
+        <div class="hidden md:flex items-center gap-10">
+            <a href="#home" class="nav-link active text-sm font-semibold uppercase tracking-wide">Beranda</a>
+            <a href="#about" class="nav-link text-sm font-semibold uppercase tracking-wide">Tentang</a>
+            <a href="#stats" class="nav-link text-sm font-semibold uppercase tracking-wide">Statistik</a>
+            <a href="#target" class="nav-link text-sm font-semibold uppercase tracking-wide">Sasaran</a>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-full text-sm font-bold transition-all transform hover:scale-105 active:scale-95 shadow-lg flex items-center gap-2">
+                <i data-lucide="phone-call" class="w-4 h-4"></i> Hubungi Kami
+            </button>
+        </div>
+
+        <!-- Mobile Menu Icon -->
+        <div class="md:hidden">
+            <i data-lucide="menu" class="w-8 h-8 cursor-pointer"></i>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="relative h-screen w-full flex items-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="FOTO MBG.jpeg" alt="Hero Background" class="w-full h-full object-cover brightness-[0.4]">
+        </div>
+        <div class="relative z-10 px-6 md:px-16 w-full max-w-5xl text-white">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <span class="inline-block px-5 py-2 bg-blue-600/40 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold uppercase tracking-[0.2em] mb-8">
+                    Badan Gizi Nasional
+                </span>
+                <h1 class="text-5xl md:text-8xl font-black leading-[1.1] mb-8 drop-shadow-lg">
+                    Nutrisi Hari Ini,<br>Prestasi Esok Hari.
+                </h1>
+                <p class="text-lg md:text-2xl text-white/90 max-w-2xl mb-12 leading-relaxed font-light">
+                    Mewujudkan Generasi Emas melalui akses makanan bergizi untuk anak sekolah, ibu hamil, dan balita di seluruh penjuru Indonesia.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#about" class="bg-white text-blue-800 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition-all shadow-xl">Pelajari Program</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <div class="relative group rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1000" alt="Siswa Makan" class="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+            </div>
+
+            <div class="space-y-8" data-aos="fade-left">
+                <span class="text-blue-600 font-extrabold text-xs uppercase tracking-[0.3em] bg-blue-50 px-5 py-2 rounded-full inline-block">Tentang Program</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Apa Itu Makan Bergizi Gratis?</h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Makan Bergizi Gratis (MBG) adalah program unggulan pemerintah Indonesia yang dikelola oleh <strong>Badan Gizi Nasional</strong>. Program ini bertujuan untuk memberikan asupan makan siang bergizi secara cuma-cuma.
+                </p>
+                <div class="grid sm:grid-cols-2 gap-6 pt-6">
+                    <div class="flex gap-4 p-5 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                        <div class="bg-blue-50 p-3 rounded-xl h-fit"><i data-lucide="shield-check" class="text-blue-600"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Ketahanan Pangan</h4>
+                            <p class="text-xs text-slate-500 mt-1">Menjamin ketersediaan stok pangan nasional.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-5 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                        <div class="bg-blue-50 p-3 rounded-xl h-fit"><i data-lucide="brain" class="text-blue-600"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Kecerdasan</h4>
+                            <p class="text-xs text-slate-500 mt-1">Membantu kognitif anak saat belajar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" class="py-32 bg-blue-50 px-6 md:px-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <h2 class="text-4xl font-extrabold mb-6">Statistik Capaian & Target</h2>
+                <p class="text-slate-600 text-lg">Langkah nyata kami untuk memastikan setiap anak Indonesia mendapatkan hak nutrisi yang layak.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 text-center group hover:bg-blue-600 transition-all" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="mb-6 flex justify-center text-blue-600 group-hover:text-white transition-colors"><i data-lucide="users" class="w-12 h-12"></i></div>
+                    <h3 class="text-4xl font-black mb-2 group-hover:text-white transition-colors">82.9 Juta</h3>
+                    <p class="text-sm font-medium text-slate-500 group-hover:text-white/80 transition-colors uppercase tracking-widest">Penerima Manfaat</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 text-center group hover:bg-blue-600 transition-all" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="mb-6 flex justify-center text-blue-600 group-hover:text-white transition-colors"><i data-lucide="school" class="w-12 h-12"></i></div>
+                    <h3 class="text-4xl font-black mb-2 group-hover:text-white transition-colors">500K+</h3>
+                    <p class="text-sm font-medium text-slate-500 group-hover:text-white/80 transition-colors uppercase tracking-widest">Sekolah Terdaftar</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 text-center group hover:bg-blue-600 transition-all" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="mb-6 flex justify-center text-blue-600 group-hover:text-white transition-colors"><i data-lucide="utensils" class="w-12 h-12"></i></div>
+                    <h3 class="text-4xl font-black mb-2 group-hover:text-white transition-colors">2.5K+</h3>
+                    <p class="text-sm font-medium text-slate-500 group-hover:text-white/80 transition-colors uppercase tracking-widest">Dapur Satuan</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-xl shadow-blue-900/5 text-center group hover:bg-blue-600 transition-all" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="mb-6 flex justify-center text-blue-600 group-hover:text-white transition-colors"><i data-lucide="heart" class="w-12 h-12"></i></div>
+                    <h3 class="text-4xl font-black mb-2 group-hover:text-white transition-colors">100%</h3>
+                    <p class="text-sm font-medium text-slate-500 group-hover:text-white/80 transition-colors uppercase tracking-widest">Standar WHO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET SECTION -->
+    <section id="target" class="py-32 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="mb-16" data-aos="fade-right">
+            <h2 class="text-4xl font-extrabold mb-4">Sasaran Utama Program</h2>
+            <p class="text-slate-600 max-w-xl text-lg">Memprioritaskan kelompok masyarakat yang krusial bagi masa depan bangsa.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all group" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-600/30 transform transition-transform group-hover:rotate-12">
+                    <i data-lucide="graduation-cap"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Anak Sekolah</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Siswa PAUD hingga SMA di seluruh wilayah Indonesia.</p>
+            </div>
+            <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all group" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-16 h-16 bg-emerald-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-emerald-500/30 transform transition-transform group-hover:rotate-12">
+                    <i data-lucide="baby"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Balita</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Fokus pada pertumbuhan fisik dan otak di 1000 hari pertama.</p>
+            </div>
+            <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all group" data-aos="fade-up" data-aos-delay="300">
+                <div class="w-16 h-16 bg-pink-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-pink-500/30 transform transition-transform group-hover:rotate-12">
+                    <i data-lucide="heart-pulse"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Ibu Hamil</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Menjaga kesehatan janin untuk mencegah risiko stunting.</p>
+            </div>
+            <div class="p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl transition-all group" data-aos="fade-up" data-aos-delay="400">
+                <div class="w-16 h-16 bg-orange-500 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-orange-500/30 transform transition-transform group-hover:rotate-12">
+                    <i data-lucide="user-plus"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Prioritas Khusus</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">Masyarakat di daerah terpencil (3T) yang sulit akses gizi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="px-6 md:px-16 pb-32">
+        <div class="relative rounded-[3.5rem] bg-blue-700 overflow-hidden py-24 px-10 text-center text-white" data-aos="zoom-in">
+            <div class="absolute inset-0 cta-pattern opacity-10"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-black mb-8">Mari Berkontribusi untuk Indonesia yang Lebih Baik</h2>
+                <p class="text-white/80 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Kami membuka peluang kemitraan bagi pemasok lokal, UMKM, dan tenaga ahli untuk bersama menyukseskan program nasional ini.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <button class="bg-white text-blue-700 px-12 py-5 rounded-full font-bold hover:bg-slate-100 transition-all shadow-2xl text-lg">Hubungi Kemitraan</button>
+                    <button class="bg-blue-800/40 border border-white/30 text-white px-12 py-5 rounded-full font-bold hover:bg-blue-800/60 transition-all text-lg">Lihat Panduan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-24 pb-12 px-6 md:px-16 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Lambang_Indonesia.svg" alt="Logo" class="w-10 h-10">
+                    <span class="font-black text-2xl tracking-tighter">BGN</span>
+                </div>
+                <p class="text-slate-500 text-sm leading-relaxed mb-8">
+                    Inisiatif Pemerintah Republik Indonesia melalui Badan Gizi Nasional untuk meningkatkan kualitas kesehatan rakyat secara inklusif.
+                </p>
+                <div class="flex gap-4">
+                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer hover:bg-blue-600 hover:text-white transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></div>
+                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer hover:bg-blue-600 hover:text-white transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></div>
+                    <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center cursor-pointer hover:bg-blue-600 hover:text-white transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></div>
+                </div>
+            </div>
+            
+            <div>
+                <h5 class="font-bold text-slate-900 mb-8 uppercase text-xs tracking-[0.2em]">Program Utama</h5>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Struktur Organisasi</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Visi & Misi</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Pusat Informasi</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-slate-900 mb-8 uppercase text-xs tracking-[0.2em]">Layanan Publik</h5>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Pendaftaran Sekolah</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Data Gizi Nasional</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Pengaduan Masyarakat</a></li>
+                    <li><a href="#" class="hover:text-blue-600 transition-all">Karier & Relawan</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="font-bold text-slate-900 mb-8 uppercase text-xs tracking-[0.2em]">Kontak Kami</h5>
+                <ul class="space-y-5 text-sm text-slate-500">
+                    <li class="flex gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-blue-600 shrink-0"></i> <span>Gedung BGN, Kuningan Timur, Setiabudi, Jakarta Selatan 12950</span></li>
+                    <li class="flex gap-3"><i data-lucide="mail" class="w-5 h-5 text-blue-600 shrink-0"></i> <span>kontak@bgn.go.id</span></li>
+                    <li class="flex gap-3"><i data-lucide="phone" class="w-5 h-5 text-blue-600 shrink-0"></i> <span>1500-XXX (Bebas Pulsa)</span></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto pt-10 border-t border-slate-100 flex flex-col md:row justify-between items-center gap-6 text-xs text-slate-400">
+            <p>©️ 2026 Badan Gizi Nasional Republik Indonesia. Seluruh Hak Cipta Dilindungi.</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-slate-600">Kebijakan Privasi</a>
+                <a href="#" class="hover:text-slate-600">Syarat & Ketentuan</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS (Animasi Scroll)
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+        });
+
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Logika Intro Animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const intro = document.getElementById('intro-screen');
+                intro.style.transform = 'translateY(-100%)';
+                // Aktifkan scroll setelah intro selesai
+                document.body.style.overflow = 'auto';
+            }, 2500);
+        });
+
+        // Sticky Navbar Effect & Active State
+        const nav = document.getElementById('main-nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-glass', 'py-3', 'text-slate-900');
+                nav.classList.remove('py-5', 'text-white');
+            } else {
+                nav.classList.remove('nav-glass', 'py-3', 'text-slate-900');
+                nav.classList.add('py-5', 'text-white');
+            }
+
+            // Update Active Link berdasarkan scroll position
+            let current = '';
+            const sections = document.querySelectorAll('header, section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mencegah scroll saat intro sedang berjalan
+        document.body.style.overflow = 'hidden';
+    </script>
+</body>
+</html>
